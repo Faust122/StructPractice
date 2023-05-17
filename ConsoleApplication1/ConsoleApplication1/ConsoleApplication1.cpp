@@ -10,11 +10,11 @@ struct Films
     float rating;
     float cost;
 };
-int FindByName(Films& obj,string value,int size)
+int FindByName(Films* arr,string value,int size)
 {
     for (int i = 0; i < size; i++)
     {
-        if ( obj.NameFilms == value)
+        if ( arr[i].NameFilms == value)
         {
             return i;
         }
@@ -22,11 +22,11 @@ int FindByName(Films& obj,string value,int size)
     return -1;
 }
 
-int FindByDirector(Films& obj, string value, int size)
+int FindByDirector(Films* arr, string value, int size)
 {
     for (int i = 0; i < size; i++)
     {
-        if (obj.director == value)
+        if (arr[i].director == value)
         {
             return i;
         }
@@ -34,18 +34,18 @@ int FindByDirector(Films& obj, string value, int size)
     return -1;
 }
 
-int FindByGenre(Films& obj, string value, int size)
+int FindByGenre(Films* arr, string value, int size)
 {
     for (int i = 0; i < size; i++)
     {
-        if (obj.genre == value)
+        if (arr[i].genre == value)
         {
             return i;
         }
     }
     return -1;
 }
-int FindByRatingInGenre(Films&* arr,string value, int size, int rating)
+int FindByRatingInGenre(Films* arr,string value, int size, int rating)
 {
     int tmp;
     tmp = arr[size].rating;
