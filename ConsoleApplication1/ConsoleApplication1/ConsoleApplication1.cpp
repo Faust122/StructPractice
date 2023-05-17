@@ -45,6 +45,21 @@ int FindByGenre(Films* arr, string value, const int& size)
     }
     return -1;
 }
+
+int SortByRatingPopularity(Films* arr, const int& size)
+{
+    for (size_t i = 0; i < size - 1; i++)
+    {
+        for (size_t j = 0; j < size - 1; j++) {
+            if (arr[j].rating > arr[j + 1].rating)
+            {
+                Films tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
+
 int FindByRatingInGenre(Films* arr,string value, const int& size, int rating)
 {
     int tmp;
@@ -63,6 +78,7 @@ int FindByRatingInGenre(Films* arr,string value, const int& size, int rating)
         }
     }
          return tmp;
+
 }
 
 int SortByRatingPopularity(Films* arr,const int& size)
@@ -81,6 +97,7 @@ int SortByRatingPopularity(Films* arr,const int& size)
 }
 int main()
 {
+
     
     int size = 20;
     Films* library = new Films[size];
@@ -94,7 +111,7 @@ int main()
     library[7] = { "Guardians of the Galaxy", "James Gunn", "Science Fiction, Adventure, Action" };
     library[8] = { "Goodfellas", "Martin Scorsese", "Crime, Drama" };
     library[9] = { "The Matrix", "Lana Wachowski, Lilly Wachowski", "Science Fiction, Action" };
-    library[10] = { "Hachi: A Dog's Tale", "Lasse Hallström", "Drama, Family, Biography" };
+    library[10] = { "Hachi: A Dog's Tale", "Lasse Hallstrom", "Drama, Family, Biography" };
     library[11] = { "Harry Potter and the Philosopher's Stone", "Chris Columbus", "Fantasy, Adventure" };
     library[12] = { "Lost in Translation", "Sofia Coppola", "Drama, Comedy" };
     library[13] = { "The Godfather", "Francis Ford Coppola", "Drama, Crime" };
@@ -104,4 +121,6 @@ int main()
     library[17] = { "Inception", "Christopher Nolan", "Science Fiction, Action, Thriller" };
     library[18] = { "Jurassic Park", "Steven Spielberg", "Science Fiction, Adventure, Thriller" };
     library[19] = { "Indiana Jones and the Last Crusade", "Steven Spielberg", "Adventure, Action, Fantasy" };
+
+
 }
