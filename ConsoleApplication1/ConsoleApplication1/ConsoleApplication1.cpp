@@ -45,19 +45,19 @@ int FindByGenre(Films& obj, string value, int size)
     }
     return -1;
 }
-int FindByRatingInGenre(Films&* arr,Films& obj,string value, int size, int rating)
+int FindByRatingInGenre(Films&* arr,string value, int size, int rating)
 {
     int tmp;
-    tmp = arr[size];
+    tmp = arr[size].rating;
     for (size_t i = 0; i < size; i++)
     {
-        if (obj.genre == value )
+        if (arr[i].genre == value)
         {
             for (size_t j = 0; j < size; i++)
             {
-                if (tmp<arr[j])
+                if (tmp<arr[j].rating)
                 {
-                    tmp = arr[j];
+                    tmp = arr[j].rating;
                 }
             }
         }
