@@ -10,7 +10,7 @@ struct Films
     float rating;
     float cost;
 };
-int FindByName(Films* arr,string value,int size)
+int FindByName(Films* arr,string value,const int& size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -22,7 +22,7 @@ int FindByName(Films* arr,string value,int size)
     return -1;
 }
 
-int FindByDirector(Films* arr, string value, int size)
+int FindByDirector(Films* arr, string value, const int& size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -34,7 +34,7 @@ int FindByDirector(Films* arr, string value, int size)
     return -1;
 }
 
-int FindByGenre(Films* arr, string value, int size)
+int FindByGenre(Films* arr, string value, const int& size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -45,7 +45,7 @@ int FindByGenre(Films* arr, string value, int size)
     }
     return -1;
 }
-int FindByRatingInGenre(Films* arr,string value, int size, int rating)
+int FindByRatingInGenre(Films* arr,string value, const int& size, int rating)
 {
     int tmp;
     tmp = arr[size].rating;
@@ -63,6 +63,21 @@ int FindByRatingInGenre(Films* arr,string value, int size, int rating)
         }
     }
          return tmp;
+}
+
+int SortByRatingPopularity(Films* arr,const int& size)
+{
+    for (size_t i = 0; i < size-1; i++)
+    {
+        for (size_t j = 0; j < size-1; j++) {
+            if (arr[j].rating>arr[j+1].rating)
+            {
+                Films tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
 }
 int main()
 {
