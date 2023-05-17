@@ -10,11 +10,11 @@ struct Films
     float rating;
     float cost;
 };
-int FindByName(Films& obj,string value,int size)
+int FindByName(Films* arr,string value,const int& size)
 {
     for (int i = 0; i < size; i++)
     {
-        if ( obj.NameFilms == value)
+        if ( arr[i].NameFilms == value)
         {
             return i;
         }
@@ -22,11 +22,11 @@ int FindByName(Films& obj,string value,int size)
     return -1;
 }
 
-int FindByDirector(Films& obj, string value, int size)
+int FindByDirector(Films* arr, string value, const int& size)
 {
     for (int i = 0; i < size; i++)
     {
-        if (obj.director == value)
+        if (arr[i].director == value)
         {
             return i;
         }
@@ -34,23 +34,43 @@ int FindByDirector(Films& obj, string value, int size)
     return -1;
 }
 
-int FindByGenre(Films& obj, string value, int size)
+int FindByGenre(Films* arr, string value, const int& size)
 {
     for (int i = 0; i < size; i++)
     {
-        if (obj.genre == value)
+        if (arr[i].genre == value)
         {
             return i;
         }
     }
     return -1;
 }
-int SortByRatingPopularity(Films* arr, const int& size)
+int FindByRatingInGenre(Films* arr,string value, const int& size, int rating)
 {
-    for (size_t i = 0; i < size - 1; i++)
+    int tmp;
+    tmp = arr[size].rating;
+    for (size_t i = 0; i < size; i++)
     {
-        for (size_t j = 0; j < size - 1; j++) {
-            if (arr[j].rating > arr[j + 1].rating)
+        if (arr[i].genre == value)
+        {
+            for (size_t j = 0; j < size; i++)
+            {
+                if (tmp<arr[j].rating)
+                {
+                    tmp = arr[j].rating;
+                }
+            }
+        }
+    }
+         return tmp;
+}
+
+int SortByRatingPopularity(Films* arr,const int& size)
+{
+    for (size_t i = 0; i < size-1; i++)
+    {
+        for (size_t j = 0; j < size-1; j++) {
+            if (arr[j].rating>arr[j+1].rating)
             {
                 Films tmp = arr[j];
                 arr[j] = arr[j + 1];
@@ -59,7 +79,6 @@ int SortByRatingPopularity(Films* arr, const int& size)
         }
     }
 }
-
 int main()
 {
     
